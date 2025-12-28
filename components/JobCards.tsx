@@ -226,7 +226,7 @@ export default function JobCards({ animationsEnabled }: JobCardsProps) {
   const gridRef = useRef<HTMLDivElement>(null);
   const videoRefs = useRef<(HTMLVideoElement | null)[]>([]);
   const isInView = useInView(sectionRef, { once: true, margin: '-100px' });
-  const isGridInView = useInView(gridRef, { once: true, margin: '-80px', amount: 0.1 });
+  const isGridInView = useInView(gridRef, { once: true, margin: '-200px', amount: 0.15 });
 
   useEffect(() => {
     videoRefs.current.forEach((video) => {
