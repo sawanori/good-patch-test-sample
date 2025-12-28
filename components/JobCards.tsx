@@ -99,8 +99,8 @@ const headerVariants = {
 function JobCardItem({ job, index, animationsEnabled, videoRef, isContainerInView }: JobCardItemProps & { isContainerInView: boolean }) {
   const isWide = job.isWide;
 
-  // スタッガーアニメーション: 各カードに0.4秒ずつ遅延を追加（よりゆっくり1枚ずつ出現）
-  const staggerDelay = 0.6 + index * 0.4;
+  // スタッガーアニメーション: 各カードに0.5秒ずつ遅延を追加（よりゆっくり1枚ずつ出現）
+  const staggerDelay = 0.8 + index * 0.5;
 
   return (
     <motion.div
@@ -108,7 +108,7 @@ function JobCardItem({ job, index, animationsEnabled, videoRef, isContainerInVie
       initial={animationsEnabled ? { opacity: 0, y: 30 } : { opacity: 1, y: 0 }}
       animate={isContainerInView ? { opacity: 1, y: 0 } : (animationsEnabled ? { opacity: 0, y: 30 } : { opacity: 1, y: 0 })}
       transition={{
-        duration: 0.9,
+        duration: 1.0,
         delay: animationsEnabled && isContainerInView ? staggerDelay : 0,
         ease: [0.22, 1, 0.36, 1]
       }}
@@ -226,7 +226,7 @@ export default function JobCards({ animationsEnabled }: JobCardsProps) {
   const gridRef = useRef<HTMLDivElement>(null);
   const videoRefs = useRef<(HTMLVideoElement | null)[]>([]);
   const isInView = useInView(sectionRef, { once: true, margin: '-100px' });
-  const isGridInView = useInView(gridRef, { once: true, margin: '-200px', amount: 0.15 });
+  const isGridInView = useInView(gridRef, { once: true, margin: '-80px', amount: 0.1 });
 
   useEffect(() => {
     videoRefs.current.forEach((video) => {
