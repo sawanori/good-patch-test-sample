@@ -8,7 +8,23 @@ interface JobCardsProps {
   animationsEnabled: boolean;
 }
 
-const jobs = [
+interface Job {
+  id: number;
+  titleEn: string;
+  titleJa: string;
+  description: string;
+  image: string;
+  bgColor: string;
+  isWide?: boolean;
+}
+
+interface JobCardItemProps {
+  job: Job;
+  animationsEnabled: boolean;
+  videoRef: (el: HTMLVideoElement | null) => void;
+}
+
+const jobs: Job[] = [
   {
     id: 1,
     titleEn: 'UI/UX Designer',
@@ -68,27 +84,6 @@ const jobs = [
   },
 ];
 
-const containerVariants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.1,
-      delayChildren: 0.2,
-    },
-  },
-};
-
-const itemVariants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: {
-      duration: 0.6,
-    },
-  },
-};
-
 const headerVariants = {
   hidden: { opacity: 0 },
   visible: {
@@ -98,6 +93,136 @@ const headerVariants = {
     },
   },
 };
+
+// 個別のカードコンポーネント - 各カードが独立してスクロール検知
+function JobCardItem({ job, animationsEnabled, videoRef }: JobCardItemProps) {
+  const cardRef = useRef<HTMLDivElement>(null);
+  const isCardInView = useInView(cardRef, {
+    once: true,
+    margin: '-50px',
+    amount: 0.2
+  });
+
+  const isWide = job.isWide;
+
+  return (
+    <motion.div
+      ref={cardRef}
+      className={`group transition-all duration-500 ${isWide ? 'col-span-2' : ''}`}
+      initial={animationsEnabled ? { opacity: 0, y: 30 } : { opacity: 1, y: 0 }}
+      animate={isCardInView ? { opacity: 1, y: 0 } : (animationsEnabled ? { opacity: 0, y: 30 } : { opacity: 1, y: 0 })}
+      transition={{
+        duration: 0.8,
+        ease: [0.25, 0.1, 0.25, 1]
+      }}
+    >
+      {isWide ? (
+        /* Wide Card - Video Background with Centered Content */
+        <div className="relative aspect-[8/5]" style={{ marginBottom: '-10px', clipPath: 'inset(0 0 10px 0)' }}>
+          <div
+            className="relative w-full h-full overflow-hidden rounded-2xl"
+            style={{ backgroundColor: job.bgColor }}
+          >
+            {/* Video Background */}
+            <video
+              ref={videoRef}
+              autoPlay={animationsEnabled}
+              loop
+              muted
+              playsInline
+              className="absolute inset-0 w-full h-full object-cover object-center"
+            >
+              <source src="/final.webm" type="video/webm" />
+              <source src="/final (5).mp4" type="video/mp4" />
+            </video>
+            {/* Overlay */}
+            <div className="absolute inset-0 bg-black/30" />
+            {/* Centered Content */}
+            <div className="absolute inset-0 flex flex-col justify-center items-center text-center p-6">
+              <p className="text-white font-semibold text-[10px] mb-0.5">
+                {job.titleEn}
+              </p>
+              <h3 className="text-sm font-bold text-white mb-1.5">
+                {job.titleJa}
+              </h3>
+              <p className="text-[10px] text-white/80 leading-relaxed mb-3 max-w-md">
+                {job.description}
+              </p>
+              <div className="flex flex-col gap-1.5 items-center">
+                <Link
+                  href="#"
+                  className="inline-flex items-center gap-1.5 bg-white text-[#0066FF] font-semibold rounded-full justify-center py-1.5 px-10 text-[10px] hover:bg-gray-100 transition-colors"
+                >
+                  Entry
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="w-2.5 h-2.5">
+                    <path d="M7 17L17 7M17 7H7M17 7V17" />
+                  </svg>
+                </Link>
+                <Link
+                  href="#"
+                  className="text-[10px] font-medium text-white hover:underline transition-colors duration-200"
+                >
+                  この職種の魅力
+                </Link>
+              </div>
+            </div>
+          </div>
+        </div>
+      ) : (
+        /* Normal Card - Vertical Layout */
+        <>
+          {/* Video Container */}
+          <div
+            className="relative aspect-[4/5] overflow-hidden rounded-2xl"
+            style={{ backgroundColor: job.bgColor }}
+          >
+            <video
+              ref={videoRef}
+              autoPlay={animationsEnabled}
+              loop
+              muted
+              playsInline
+              className="w-full h-full object-cover object-center"
+            >
+              <source src="/final.webm" type="video/webm" />
+              <source src="/final (5).mp4" type="video/mp4" />
+            </video>
+          </div>
+
+          {/* Content */}
+          <div className="pt-3 text-center">
+            <p className="text-[#0066FF] font-semibold text-[10px] mb-0.5">
+              {job.titleEn}
+            </p>
+            <h3 className="text-sm font-bold text-gray-900 mb-1.5">
+              {job.titleJa}
+            </h3>
+            <p className="text-[10px] text-gray-500 leading-relaxed mb-3 min-h-[1.5rem]">
+              {job.description}
+            </p>
+            <div className="flex flex-col gap-1.5 items-center">
+              <Link
+                href="#"
+                className="btn-primary justify-center py-1.5 px-10 text-[10px]"
+              >
+                Entry
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="w-2.5 h-2.5">
+                  <path d="M7 17L17 7M17 7H7M17 7V17" />
+                </svg>
+              </Link>
+              <Link
+                href="#"
+                className="text-[10px] font-medium text-[#0066FF] hover:underline transition-colors duration-200"
+              >
+                この職種の魅力
+              </Link>
+            </div>
+          </div>
+        </>
+      )}
+    </motion.div>
+  );
+}
 
 export default function JobCards({ animationsEnabled }: JobCardsProps) {
   const sectionRef = useRef<HTMLElement>(null);
@@ -137,131 +262,16 @@ export default function JobCards({ animationsEnabled }: JobCardsProps) {
         </motion.div>
 
         {/* Job Cards Grid */}
-        <motion.div
-          className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-8"
-          initial={animationsEnabled ? 'hidden' : 'visible'}
-          animate={isInView ? 'visible' : 'hidden'}
-          variants={containerVariants}
-        >
-          {jobs.map((job) => {
-            const isWide = 'isWide' in job && job.isWide;
-
-            return (
-              <motion.div
-                key={job.id}
-                className={`group transition-all duration-500 ${
-                  isWide ? 'col-span-2' : ''
-                }`}
-                variants={itemVariants}
-              >
-                {isWide ? (
-                  /* Wide Card - Video Background with Centered Content */
-                  <div className="relative aspect-[8/5]" style={{ marginBottom: '-10px', clipPath: 'inset(0 0 10px 0)' }}>
-                    <div
-                      className="relative w-full h-full overflow-hidden rounded-2xl"
-                      style={{ backgroundColor: job.bgColor }}
-                    >
-                    {/* Video Background */}
-                    <video
-                      ref={(el) => { videoRefs.current[job.id - 1] = el; }}
-                      autoPlay={animationsEnabled}
-                      loop
-                      muted
-                      playsInline
-                      className="absolute inset-0 w-full h-full object-cover object-center"
-                    >
-                      <source src="/final.webm" type="video/webm" />
-                      <source src="/final (5).mp4" type="video/mp4" />
-                    </video>
-                    {/* Overlay */}
-                    <div className="absolute inset-0 bg-black/30" />
-                    {/* Centered Content */}
-                    <div className="absolute inset-0 flex flex-col justify-center items-center text-center p-6">
-                      <p className="text-white font-semibold text-[10px] mb-0.5">
-                        {job.titleEn}
-                      </p>
-                      <h3 className="text-sm font-bold text-white mb-1.5">
-                        {job.titleJa}
-                      </h3>
-                      <p className="text-[10px] text-white/80 leading-relaxed mb-3 max-w-md">
-                        {job.description}
-                      </p>
-                      <div className="flex flex-col gap-1.5 items-center">
-                        <Link
-                          href="#"
-                          className="inline-flex items-center gap-1.5 bg-white text-[#0066FF] font-semibold rounded-full justify-center py-1.5 px-10 text-[10px] hover:bg-gray-100 transition-colors"
-                        >
-                          Entry
-                          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="w-2.5 h-2.5">
-                            <path d="M7 17L17 7M17 7H7M17 7V17" />
-                          </svg>
-                        </Link>
-                        <Link
-                          href="#"
-                          className="text-[10px] font-medium text-white hover:underline transition-colors duration-200"
-                        >
-                          この職種の魅力
-                        </Link>
-                      </div>
-                    </div>
-                    </div>
-                  </div>
-                ) : (
-                  /* Normal Card - Vertical Layout */
-                  <>
-                    {/* Video Container */}
-                    <div
-                      className="relative aspect-[4/5] overflow-hidden rounded-2xl"
-                      style={{ backgroundColor: job.bgColor }}
-                    >
-                      <video
-                        ref={(el) => { videoRefs.current[job.id - 1] = el; }}
-                        autoPlay={animationsEnabled}
-                        loop
-                        muted
-                        playsInline
-                        className="w-full h-full object-cover object-center"
-                      >
-                        <source src="/final.webm" type="video/webm" />
-                        <source src="/final (5).mp4" type="video/mp4" />
-                      </video>
-                    </div>
-
-                    {/* Content */}
-                    <div className="pt-3 text-center">
-                      <p className="text-[#0066FF] font-semibold text-[10px] mb-0.5">
-                        {job.titleEn}
-                      </p>
-                      <h3 className="text-sm font-bold text-gray-900 mb-1.5">
-                        {job.titleJa}
-                      </h3>
-                      <p className="text-[10px] text-gray-500 leading-relaxed mb-3 min-h-[1.5rem]">
-                        {job.description}
-                      </p>
-                      <div className="flex flex-col gap-1.5 items-center">
-                        <Link
-                          href="#"
-                          className="btn-primary justify-center py-1.5 px-10 text-[10px]"
-                        >
-                          Entry
-                          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="w-2.5 h-2.5">
-                            <path d="M7 17L17 7M17 7H7M17 7V17" />
-                          </svg>
-                        </Link>
-                        <Link
-                          href="#"
-                          className="text-[10px] font-medium text-[#0066FF] hover:underline transition-colors duration-200"
-                        >
-                          この職種の魅力
-                        </Link>
-                      </div>
-                    </div>
-                  </>
-                )}
-              </motion.div>
-            );
-          })}
-        </motion.div>
+        <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-8">
+          {jobs.map((job) => (
+            <JobCardItem
+              key={job.id}
+              job={job}
+              animationsEnabled={animationsEnabled}
+              videoRef={(el) => { videoRefs.current[job.id - 1] = el; }}
+            />
+          ))}
+        </div>
 
         {/* View All Button */}
         <motion.div
