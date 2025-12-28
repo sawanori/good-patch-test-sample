@@ -236,33 +236,25 @@ function PeopleSection({ animationsEnabled }: { animationsEnabled: boolean }) {
 
         {/* People Cards */}
         <motion.div
-          className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto mb-12"
+          className="grid grid-cols-2 gap-4 md:gap-8 max-w-4xl mx-auto mb-12"
           initial={animationsEnabled ? 'hidden' : 'visible'}
           animate={isInView ? 'visible' : 'hidden'}
           variants={fadeIn}
           transition={{ delay: 0.3 }}
         >
-          <div className="relative rounded-2xl overflow-hidden group">
+          <div className="rounded-2xl overflow-hidden group">
             <img
               src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=600&q=80"
               alt="社員インタビュー"
               className="w-full aspect-[4/3] object-cover transition-transform duration-500 group-hover:scale-105"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
-            <div className="absolute bottom-0 left-0 right-0 p-6 text-white">
-              <p className="font-semibold">社員インタビュー</p>
-            </div>
           </div>
-          <div className="relative rounded-2xl overflow-hidden group">
+          <div className="rounded-2xl overflow-hidden group">
             <img
               src="https://images.unsplash.com/photo-1600880292089-90a7e086ee0c?auto=format&fit=crop&w=600&q=80"
               alt="座談会"
               className="w-full aspect-[4/3] object-cover transition-transform duration-500 group-hover:scale-105"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
-            <div className="absolute bottom-0 left-0 right-0 p-6 text-white">
-              <p className="font-semibold">座談会</p>
-            </div>
           </div>
         </motion.div>
 
