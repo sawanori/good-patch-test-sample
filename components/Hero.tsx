@@ -54,8 +54,8 @@ export default function Hero({ animationsEnabled }: HeroProps) {
           <source src="/final (6).mp4" type="video/mp4" />
         </video>
         {/* Overlay for better text readability */}
-        <div className="absolute inset-0 bg-gradient-to-r from-black/50 via-black/30 to-transparent" />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-r from-black/25 via-black/15 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/15 to-transparent" />
       </div>
 
 

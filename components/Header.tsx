@@ -93,13 +93,13 @@ export default function Header({ animationsEnabled, onToggleAnimations }: Header
         <div className="container-custom">
           <div className="flex items-center justify-between h-14 md:h-16">
             {/* Logo */}
-            <Link href="/" className="flex items-center gap-4 group">
+            <Link href="/" className="flex items-center gap-1 sm:gap-2 md:gap-4 group">
               <svg
                 width="220"
                 height="40"
                 viewBox="0 0 220 40"
                 fill="none"
-                className="transition-all duration-300 group-hover:scale-105"
+                className="w-[140px] sm:w-[180px] md:w-[220px] h-auto transition-all duration-300 group-hover:scale-105"
               >
                 {/* Goodpatch Logo */}
                 <text
