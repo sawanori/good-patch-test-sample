@@ -10,7 +10,9 @@ interface HeroProps {
 
 export default function Hero({ animationsEnabled }: HeroProps) {
   const textRef = useRef<HTMLDivElement>(null);
+  const videoRef = useRef<HTMLVideoElement>(null);
 
+  // テキストアニメーションの制御
   useEffect(() => {
     if (!animationsEnabled || !textRef.current) return;
 
@@ -18,6 +20,17 @@ export default function Hero({ animationsEnabled }: HeroProps) {
     chars.forEach((char, i) => {
       (char as HTMLElement).style.animationDelay = `${i * 0.03}s`;
     });
+  }, [animationsEnabled]);
+
+  // 動画の再生/停止制御
+  useEffect(() => {
+    if (!videoRef.current) return;
+
+    if (animationsEnabled) {
+      videoRef.current.play();
+    } else {
+      videoRef.current.pause();
+    }
   }, [animationsEnabled]);
 
   const mainTextPart1 = 'あなたのやりたいことは、';
@@ -30,6 +43,7 @@ export default function Hero({ animationsEnabled }: HeroProps) {
       {/* Background Video */}
       <div className="absolute inset-0">
         <video
+          ref={videoRef}
           autoPlay
           loop
           muted
@@ -44,20 +58,6 @@ export default function Hero({ animationsEnabled }: HeroProps) {
         <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent" />
       </div>
 
-      {/* Decorative elements on the background (like the office setup in original) */}
-      <div className="absolute inset-0 pointer-events-none">
-        {/* Chalkboard-style decoration text (simulating "Designing the Wow!") */}
-        <div className="absolute top-1/4 right-1/4 hidden lg:block">
-          <div
-            className={`text-white/10 text-6xl font-bold italic ${
-              animationsEnabled ? 'animate-fade-in delay-500' : ''
-            }`}
-            style={{ opacity: animationsEnabled ? 0 : 0.1, animationFillMode: 'forwards' }}
-          >
-            Designing the Wow!
-          </div>
-        </div>
-      </div>
 
       {/* Content */}
       <div className="relative z-10 container-custom px-4 sm:px-12 lg:px-24 flex items-end pb-24 sm:pb-32 min-h-[90vh]">
