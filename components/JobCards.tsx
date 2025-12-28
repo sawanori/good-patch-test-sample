@@ -20,6 +20,7 @@ interface Job {
 
 interface JobCardItemProps {
   job: Job;
+  index: number;
   animationsEnabled: boolean;
   videoRef: (el: HTMLVideoElement | null) => void;
 }
@@ -94,26 +95,22 @@ const headerVariants = {
   },
 };
 
-// 個別のカードコンポーネント - 各カードが独立してスクロール検知
-function JobCardItem({ job, animationsEnabled, videoRef }: JobCardItemProps) {
-  const cardRef = useRef<HTMLDivElement>(null);
-  const isCardInView = useInView(cardRef, {
-    once: true,
-    margin: '-50px',
-    amount: 0.2
-  });
-
+// 個別のカードコンポーネント - 親コンテナのInView状態を受け取る
+function JobCardItem({ job, index, animationsEnabled, videoRef, isContainerInView }: JobCardItemProps & { isContainerInView: boolean }) {
   const isWide = job.isWide;
+
+  // スタッガーアニメーション: 各カードに0.12秒ずつ遅延を追加（本番サイトに近い遅延）
+  const staggerDelay = index * 0.12;
 
   return (
     <motion.div
-      ref={cardRef}
-      className={`group transition-all duration-500 ${isWide ? 'col-span-2' : ''}`}
-      initial={animationsEnabled ? { opacity: 0, y: 30 } : { opacity: 1, y: 0 }}
-      animate={isCardInView ? { opacity: 1, y: 0 } : (animationsEnabled ? { opacity: 0, y: 30 } : { opacity: 1, y: 0 })}
+      className={`group ${isWide ? 'col-span-2' : ''}`}
+      initial={animationsEnabled ? { opacity: 0, y: 50 } : { opacity: 1, y: 0 }}
+      animate={isContainerInView ? { opacity: 1, y: 0 } : (animationsEnabled ? { opacity: 0, y: 50 } : { opacity: 1, y: 0 })}
       transition={{
-        duration: 0.8,
-        ease: [0.25, 0.1, 0.25, 1]
+        duration: 0.7,
+        delay: animationsEnabled && isContainerInView ? staggerDelay : 0,
+        ease: [0.22, 1, 0.36, 1]
       }}
     >
       {isWide ? (
@@ -226,8 +223,10 @@ function JobCardItem({ job, animationsEnabled, videoRef }: JobCardItemProps) {
 
 export default function JobCards({ animationsEnabled }: JobCardsProps) {
   const sectionRef = useRef<HTMLElement>(null);
+  const gridRef = useRef<HTMLDivElement>(null);
   const videoRefs = useRef<(HTMLVideoElement | null)[]>([]);
   const isInView = useInView(sectionRef, { once: true, margin: '-100px' });
+  const isGridInView = useInView(gridRef, { once: true, margin: '-80px', amount: 0.1 });
 
   useEffect(() => {
     videoRefs.current.forEach((video) => {
@@ -262,13 +261,15 @@ export default function JobCards({ animationsEnabled }: JobCardsProps) {
         </motion.div>
 
         {/* Job Cards Grid */}
-        <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-8">
-          {jobs.map((job) => (
+        <div ref={gridRef} className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-8">
+          {jobs.map((job, index) => (
             <JobCardItem
               key={job.id}
               job={job}
+              index={index}
               animationsEnabled={animationsEnabled}
               videoRef={(el) => { videoRefs.current[job.id - 1] = el; }}
+              isContainerInView={isGridInView}
             />
           ))}
         </div>
