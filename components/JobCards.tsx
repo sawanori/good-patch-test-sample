@@ -99,16 +99,16 @@ const headerVariants = {
 function JobCardItem({ job, index, animationsEnabled, videoRef, isContainerInView }: JobCardItemProps & { isContainerInView: boolean }) {
   const isWide = job.isWide;
 
-  // スタッガーアニメーション: 各カードに0.12秒ずつ遅延を追加（本番サイトに近い遅延）
-  const staggerDelay = index * 0.12;
+  // スタッガーアニメーション: 各カードに0.4秒ずつ遅延を追加（よりゆっくり1枚ずつ出現）
+  const staggerDelay = 0.6 + index * 0.4;
 
   return (
     <motion.div
       className={`group ${isWide ? 'col-span-2' : ''}`}
-      initial={animationsEnabled ? { opacity: 0, y: 50 } : { opacity: 1, y: 0 }}
-      animate={isContainerInView ? { opacity: 1, y: 0 } : (animationsEnabled ? { opacity: 0, y: 50 } : { opacity: 1, y: 0 })}
+      initial={animationsEnabled ? { opacity: 0, y: 30 } : { opacity: 1, y: 0 }}
+      animate={isContainerInView ? { opacity: 1, y: 0 } : (animationsEnabled ? { opacity: 0, y: 30 } : { opacity: 1, y: 0 })}
       transition={{
-        duration: 0.7,
+        duration: 0.9,
         delay: animationsEnabled && isContainerInView ? staggerDelay : 0,
         ease: [0.22, 1, 0.36, 1]
       }}
