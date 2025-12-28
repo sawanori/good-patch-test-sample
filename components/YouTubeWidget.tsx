@@ -43,7 +43,7 @@ export default function YouTubeWidget() {
 
       {/* Video Thumbnail */}
       <Link
-        href="https://www.youtube.com/@goodpatch"
+        href="https://www.youtube.com/@kinenpatch"
         target="_blank"
         rel="noopener noreferrer"
         className="block relative"
@@ -67,7 +67,7 @@ export default function YouTubeWidget() {
       {/* Content */}
       <div className="p-4">
         <Link
-          href="https://www.youtube.com/@goodpatch"
+          href="https://www.youtube.com/@kinenpatch"
           target="_blank"
           rel="noopener noreferrer"
           className="block group"

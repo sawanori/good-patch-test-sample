@@ -193,50 +193,54 @@ html {
   box-shadow: 0 12px 40px rgba(0, 0, 0, 0.12);
 }
 
-/* Button styles */
+/* Button styles - Hero CTA buttons matching production */
 .btn-primary {
   display: inline-flex;
   align-items: center;
-  justify-content: center;
-  gap: 8px;
-  padding: 14px 28px;
+  justify-content: space-between;
+  gap: 6px;
+  padding: 8px 16px 8px 20px;
   background: var(--accent);
   color: white;
-  font-weight: 600;
-  font-size: 15px;
+  font-weight: 400;
+  font-size: 14px;
   border-radius: 9999px;
   transition: all var(--transition-normal) var(--ease-out-expo);
   cursor: pointer;
   border: none;
   text-decoration: none;
+  height: 40px;
+  min-width: 160px;
 }
 
 .btn-primary:hover {
   background: var(--accent-hover);
-  transform: translateY(-2px);
   box-shadow: 0 4px 12px rgba(0, 102, 255, 0.3);
 }
 
 .btn-primary svg {
-  width: 16px;
-  height: 16px;
+  width: 11px;
+  height: 11px;
+  transform: rotate(-45deg);
 }
 
 .btn-secondary {
   display: inline-flex;
   align-items: center;
-  justify-content: center;
-  gap: 8px;
-  padding: 14px 28px;
+  justify-content: space-between;
+  gap: 6px;
+  padding: 8px 16px 8px 20px;
   background: white;
   color: var(--foreground);
-  font-weight: 600;
-  font-size: 15px;
+  font-weight: 400;
+  font-size: 14px;
   border-radius: 9999px;
   border: 1px solid var(--gray-300);
   transition: all var(--transition-normal) var(--ease-out-expo);
   cursor: pointer;
   text-decoration: none;
+  height: 40px;
+  min-width: 160px;
 }
 
 .btn-secondary:hover {
@@ -245,26 +249,41 @@ html {
   background: var(--accent-light);
 }
 
+.btn-secondary svg {
+  width: 11px;
+  height: 11px;
+  transform: rotate(-45deg);
+}
+
+/* View buttons (View Overview, View Survey etc) - matching Entry button base */
 .btn-outline-blue {
   display: inline-flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
   gap: 8px;
-  padding: 12px 24px;
-  background: transparent;
-  color: var(--accent);
-  font-weight: 600;
+  padding: 0 16px;
+  background: var(--accent);
+  color: white;
+  font-weight: 400;
   font-size: 14px;
   border-radius: 9999px;
-  border: 1px solid var(--accent);
+  border: none;
   transition: all var(--transition-normal) var(--ease-out-expo);
   cursor: pointer;
   text-decoration: none;
+  min-width: 130px;
+  height: 34px;
 }
 
 .btn-outline-blue:hover {
-  background: var(--accent);
-  color: white;
+  background: var(--accent-hover);
+  box-shadow: 0 4px 12px rgba(0, 102, 255, 0.3);
+}
+
+.btn-outline-blue svg {
+  width: 11px;
+  height: 11px;
+  transform: rotate(-45deg);
 }
 
 /* Card styles */
@@ -384,6 +403,16 @@ html {
   font-size: 1rem;
   line-height: 1.7;
   color: var(--gray-600);
+}
+
+/* Hide scrollbar for horizontal scroll */
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
 }
 
 /* Reduced motion */

@@ -25,7 +25,7 @@ function AboutSection({ animationsEnabled }: { animationsEnabled: boolean }) {
 
   const links = [
     { label: '事業', href: '#' },
-    { label: 'グッドパッチの噂', href: '#' },
+    { label: 'キンエンパッチの噂', href: '#' },
     { label: '生成AI活用の現状', href: '#' },
     { label: 'ストーリー', href: '#' },
     { label: '未来', href: '#' },
@@ -35,11 +35,12 @@ function AboutSection({ animationsEnabled }: { animationsEnabled: boolean }) {
   ];
 
   return (
-    <section ref={sectionRef} id="about" className="bg-white py-24 md:py-32">
+    <section ref={sectionRef} id="about" className="bg-white py-[60px] md:py-[100px]">
       <div className="container-custom">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
-          {/* Image */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-16 lg:gap-20 items-center">
+          {/* Image - SP: bottom (order-2), Tablet/PC: left (order-1) */}
           <motion.div
+            className="order-2 md:order-1"
             initial={animationsEnabled ? 'hidden' : 'visible'}
             animate={isInView ? 'visible' : 'hidden'}
             variants={fadeIn}
@@ -47,14 +48,15 @@ function AboutSection({ animationsEnabled }: { animationsEnabled: boolean }) {
             <div className="relative rounded-2xl overflow-hidden">
               <img
                 src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?auto=format&fit=crop&w=800&q=80"
-                alt="About Goodpatch"
+                alt="About Kinenpatch"
                 className="w-full aspect-[4/3] object-cover"
               />
             </div>
           </motion.div>
 
-          {/* Content */}
+          {/* Content - SP: top (order-1), Tablet/PC: right (order-2) */}
           <motion.div
+            className="order-1 md:order-2"
             initial={animationsEnabled ? 'hidden' : 'visible'}
             animate={isInView ? 'visible' : 'hidden'}
             variants={fadeIn}
@@ -68,22 +70,22 @@ function AboutSection({ animationsEnabled }: { animationsEnabled: boolean }) {
             </div>
 
             <p className="text-[#0066FF] font-semibold text-sm mb-2">About</p>
-            <p className="text-gray-500 text-sm mb-4">グッドパッチの基本</p>
+            <p className="text-gray-500 text-sm mb-4">キンエンパッチの基本</p>
 
             <h3 className="text-2xl md:text-3xl font-bold mb-4">
-              1ページで分かるグッドパッチ
+              1ページで分かるキンエンパッチ
             </h3>
 
             <p className="text-gray-600 mb-6 leading-relaxed">
               知っておくといい基本情報を1ページにまとめました。
               <br />
-              グッドパッチを知る入口としてご覧ください。
+              キンエンパッチを知る入口としてご覧ください。
             </p>
 
             <Link href="#" className="btn-outline-blue mb-8 inline-flex">
               View Overview
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="w-4 h-4">
-                <path d="M5 12h14M12 5l7 7-7 7" />
+              <svg className="w-[13px] h-[13px]" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 10 10" fill="currentColor">
+                <path d="M5.845 2.22a.75.75 0 0 1 1.06 0L9.23 4.543c.41.41.41 1.075 0 1.485L6.905 8.352a.75.75 0 0 1-1.06-1.061l1.25-1.251H.75a.75.75 0 0 1 0-1.5h6.354l-1.26-1.26a.75.75 0 0 1 0-1.06Z" />
               </svg>
             </Link>
 
@@ -117,17 +119,18 @@ function CultureSection({ animationsEnabled }: { animationsEnabled: boolean }) {
 
   const links = [
     { label: 'ビジョンとミッション', href: '#' },
-    { label: 'グッドパッチのバリュー（価値観）', href: '#' },
-    { label: 'グッドパッチの社内用語', href: '#' },
-    { label: 'グッドパッチのナレッジ', href: '#' },
+    { label: 'キンエンパッチのバリュー（価値観）', href: '#' },
+    { label: 'キンエンパッチの社内用語', href: '#' },
+    { label: 'キンエンパッチのナレッジ', href: '#' },
   ];
 
   return (
-    <section ref={sectionRef} id="culture" className="bg-white py-24 md:py-32 border-t border-gray-100">
+    <section ref={sectionRef} id="culture" className="bg-white py-[60px] md:py-[100px] border-t border-gray-100">
       <div className="container-custom">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
-          {/* Image */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-16 lg:gap-20 items-center">
+          {/* Image - SP: bottom (order-2), Tablet/PC: left (order-1) */}
           <motion.div
+            className="order-2 md:order-1"
             initial={animationsEnabled ? 'hidden' : 'visible'}
             animate={isInView ? 'visible' : 'hidden'}
             variants={fadeIn}
@@ -135,14 +138,15 @@ function CultureSection({ animationsEnabled }: { animationsEnabled: boolean }) {
             <div className="relative rounded-2xl overflow-hidden">
               <img
                 src="https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=800&q=80"
-                alt="Culture at Goodpatch"
+                alt="Culture at Kinenpatch"
                 className="w-full aspect-[4/3] object-cover"
               />
             </div>
           </motion.div>
 
-          {/* Content */}
+          {/* Content - SP: top (order-1), Tablet/PC: right (order-2) */}
           <motion.div
+            className="order-1 md:order-2"
             initial={animationsEnabled ? 'hidden' : 'visible'}
             animate={isInView ? 'visible' : 'hidden'}
             variants={fadeIn}
@@ -153,7 +157,7 @@ function CultureSection({ animationsEnabled }: { animationsEnabled: boolean }) {
             </div>
 
             <p className="text-[#0066FF] font-semibold text-sm mb-2">Culture</p>
-            <p className="text-gray-500 text-sm mb-4">グッドパッチのカルチャー</p>
+            <p className="text-gray-500 text-sm mb-4">キンエンパッチのカルチャー</p>
 
             <h3 className="text-2xl md:text-3xl font-bold mb-6">
               私たちが大切にしていること
@@ -193,7 +197,7 @@ function PeopleSection({ animationsEnabled }: { animationsEnabled: boolean }) {
   ];
 
   return (
-    <section ref={sectionRef} id="people" className="bg-white py-24 md:py-32 border-t border-gray-100">
+    <section ref={sectionRef} id="people" className="bg-white py-[60px] md:py-[100px] border-t border-gray-100">
       <div className="container-custom">
         {/* Header */}
         <div className="text-center mb-16">
@@ -217,7 +221,7 @@ function PeopleSection({ animationsEnabled }: { animationsEnabled: boolean }) {
             transition={{ duration: 0.5, delay: 0.1 }}
           >
             <p className="text-[#0066FF] font-semibold text-sm mb-2">People</p>
-            <p className="text-gray-500 text-sm mb-4">グッドパッチで働く人々</p>
+            <p className="text-gray-500 text-sm mb-4">キンエンパッチで働く人々</p>
           </motion.div>
 
           <motion.p
@@ -226,11 +230,11 @@ function PeopleSection({ animationsEnabled }: { animationsEnabled: boolean }) {
             animate={isInView ? { opacity: 1 } : { opacity: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
           >
-            グッドパッチの力の源は、なんといっても「人」。
+            キンエンパッチの力の源は、なんといっても「人」。
             <br />
             デザイナー以外にも多種多様なスペシャリストが共に働いています。
             <br />
-            グッドパッチを動かしている人々の生の声をご覧ください。
+            キンエンパッチを動かしている人々の生の声をご覧ください。
           </motion.p>
         </div>
 
@@ -299,11 +303,12 @@ function WorkstyleSection({ animationsEnabled }: { animationsEnabled: boolean })
   ];
 
   return (
-    <section ref={sectionRef} id="workstyle" className="bg-[#F7F7F7] py-24 md:py-32">
+    <section ref={sectionRef} id="workstyle" className="bg-[#F7F7F7] py-[60px] md:py-[100px]">
       <div className="container-custom">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
-          {/* Image */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-16 lg:gap-20 items-center">
+          {/* Image - SP: bottom (order-2), Tablet/PC: left (order-1) */}
           <motion.div
+            className="order-2 md:order-1"
             initial={animationsEnabled ? 'hidden' : 'visible'}
             animate={isInView ? 'visible' : 'hidden'}
             variants={fadeIn}
@@ -311,14 +316,15 @@ function WorkstyleSection({ animationsEnabled }: { animationsEnabled: boolean })
             <div className="relative rounded-2xl overflow-hidden">
               <img
                 src="https://images.unsplash.com/photo-1497215842964-222b430dc094?auto=format&fit=crop&w=800&q=80"
-                alt="Workstyle at Goodpatch"
+                alt="Workstyle at Kinenpatch"
                 className="w-full aspect-[4/3] object-cover"
               />
             </div>
           </motion.div>
 
-          {/* Content */}
+          {/* Content - SP: top (order-1), Tablet/PC: right (order-2) */}
           <motion.div
+            className="order-1 md:order-2"
             initial={animationsEnabled ? 'hidden' : 'visible'}
             animate={isInView ? 'visible' : 'hidden'}
             variants={fadeIn}
@@ -329,7 +335,7 @@ function WorkstyleSection({ animationsEnabled }: { animationsEnabled: boolean })
             </div>
 
             <p className="text-[#0066FF] font-semibold text-sm mb-2">Workstyle</p>
-            <p className="text-gray-500 text-sm mb-4">グッドパッチの環境</p>
+            <p className="text-gray-500 text-sm mb-4">キンエンパッチの環境</p>
 
             <h3 className="text-2xl md:text-3xl font-bold mb-4">
               社員アンケート
@@ -343,8 +349,8 @@ function WorkstyleSection({ animationsEnabled }: { animationsEnabled: boolean })
 
             <Link href="#" className="btn-outline-blue mb-8 inline-flex">
               View Survey
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="w-4 h-4">
-                <path d="M5 12h14M12 5l7 7-7 7" />
+              <svg className="w-[13px] h-[13px]" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 10 10" fill="currentColor">
+                <path d="M5.845 2.22a.75.75 0 0 1 1.06 0L9.23 4.543c.41.41.41 1.075 0 1.485L6.905 8.352a.75.75 0 0 1-1.06-1.061l1.25-1.251H.75a.75.75 0 0 1 0-1.5h6.354l-1.26-1.26a.75.75 0 0 1 0-1.06Z" />
               </svg>
             </Link>
 
@@ -383,11 +389,12 @@ function ProcessSection({ animationsEnabled }: { animationsEnabled: boolean }) {
   ];
 
   return (
-    <section ref={sectionRef} id="process" className="bg-[#F7F7F7] py-24 md:py-32 border-t border-gray-200">
+    <section ref={sectionRef} id="process" className="bg-[#F7F7F7] py-[60px] md:py-[100px] border-t border-gray-200">
       <div className="container-custom">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
-          {/* Image */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-16 lg:gap-20 items-center">
+          {/* Image - SP: bottom (order-2), Tablet/PC: left (order-1) */}
           <motion.div
+            className="order-2 md:order-1"
             initial={animationsEnabled ? 'hidden' : 'visible'}
             animate={isInView ? 'visible' : 'hidden'}
             variants={fadeIn}
@@ -401,8 +408,9 @@ function ProcessSection({ animationsEnabled }: { animationsEnabled: boolean }) {
             </div>
           </motion.div>
 
-          {/* Content */}
+          {/* Content - SP: top (order-1), Tablet/PC: right (order-2) */}
           <motion.div
+            className="order-1 md:order-2"
             initial={animationsEnabled ? 'hidden' : 'visible'}
             animate={isInView ? 'visible' : 'hidden'}
             variants={fadeIn}
@@ -413,22 +421,22 @@ function ProcessSection({ animationsEnabled }: { animationsEnabled: boolean }) {
             </div>
 
             <p className="text-[#0066FF] font-semibold text-sm mb-2">Process</p>
-            <p className="text-gray-500 text-sm mb-4">グッドパッチの選考</p>
+            <p className="text-gray-500 text-sm mb-4">キンエンパッチの選考</p>
 
             <h3 className="text-2xl md:text-3xl font-bold mb-4">
               選考プロセス
             </h3>
 
             <p className="text-gray-600 mb-6 leading-relaxed">
-              グッドパッチの選考の面接回数や期間などについて
+              キンエンパッチの選考の面接回数や期間などについて
               <br />
               詳しくご説明しています。
             </p>
 
             <Link href="#" className="btn-outline-blue mb-8 inline-flex">
               View Hiring
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="w-4 h-4">
-                <path d="M5 12h14M12 5l7 7-7 7" />
+              <svg className="w-[13px] h-[13px]" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 10 10" fill="currentColor">
+                <path d="M5.845 2.22a.75.75 0 0 1 1.06 0L9.23 4.543c.41.41.41 1.075 0 1.485L6.905 8.352a.75.75 0 0 1-1.06-1.061l1.25-1.251H.75a.75.75 0 0 1 0-1.5h6.354l-1.26-1.26a.75.75 0 0 1 0-1.06Z" />
               </svg>
             </Link>
 

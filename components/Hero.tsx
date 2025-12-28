@@ -107,7 +107,7 @@ export default function Hero({ animationsEnabled }: HeroProps) {
             }`}
             style={{ opacity: animationsEnabled ? 0 : 1, animationFillMode: 'forwards' }}
           >
-            ようこそ、グッドパッチの採用サイトへ
+            ようこそ、キンエンパッチの採用サイトへ
           </p>
 
           {/* CTA Buttons */}
@@ -117,18 +117,18 @@ export default function Hero({ animationsEnabled }: HeroProps) {
             }`}
             style={{ opacity: animationsEnabled ? 0 : 1, animationFillMode: 'forwards' }}
           >
-            <Link href="#job" className="btn-primary text-base px-8 py-4">
-              Entry
-              <span className="text-sm opacity-80">38職種</span>
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="w-5 h-5">
-                <path d="M7 17L17 7M17 7H7M17 7V17" />
+            <Link href="#job" className="inline-flex items-center justify-between gap-1.5 bg-[#0066FF] text-white rounded-full pl-5 pr-4 h-[40px] min-w-[160px] hover:bg-[#0052CC] transition-colors">
+              <span className="text-[14px] font-normal">Entry</span>
+              <span className="text-[11px] font-bold leading-none">38職種</span>
+              <svg className="w-[11px] h-[11px] -rotate-45" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 10 10" fill="currentColor">
+                <path d="M5.845 2.22a.75.75 0 0 1 1.06 0L9.23 4.543c.41.41.41 1.075 0 1.485L6.905 8.352a.75.75 0 0 1-1.06-1.061l1.25-1.251H.75a.75.75 0 0 1 0-1.5h6.354l-1.26-1.26a.75.75 0 0 1 0-1.06Z" />
               </svg>
             </Link>
-            <Link href="#" className="btn-secondary text-base px-8 py-4">
-              新卒
-              <span className="text-sm text-gray-500">27卒</span>
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="w-5 h-5">
-                <path d="M7 17L17 7M17 7H7M17 7V17" />
+            <Link href="#" className="inline-flex items-center justify-between gap-1.5 bg-white text-gray-900 rounded-full pl-5 pr-4 h-[40px] min-w-[160px] border border-gray-300 hover:border-[#0066FF] hover:text-[#0066FF] transition-colors">
+              <span className="text-[14px] font-normal">新卒</span>
+              <span className="text-[11px] text-gray-500 font-bold leading-none">27卒</span>
+              <svg className="w-[11px] h-[11px] -rotate-45" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 10 10" fill="currentColor">
+                <path d="M5.845 2.22a.75.75 0 0 1 1.06 0L9.23 4.543c.41.41.41 1.075 0 1.485L6.905 8.352a.75.75 0 0 1-1.06-1.061l1.25-1.251H.75a.75.75 0 0 1 0-1.5h6.354l-1.26-1.26a.75.75 0 0 1 0-1.06Z" />
               </svg>
             </Link>
           </div>

@@ -8,64 +8,105 @@ interface PickUpProps {
   animationsEnabled: boolean;
 }
 
-const pickupItems = [
+type PickupType = 'youtube' | 'note' | 'spotify';
+
+interface PickupItem {
+  id: number;
+  type: PickupType;
+  title: string;
+  date: string;
+  datetime: string;
+  thumbnail: string;
+  href: string;
+}
+
+const pickupItems: PickupItem[] = [
   {
     id: 1,
     type: 'youtube',
     title: '佐久間さん、HP作らせてください【働く理由を赤裸々告白・ラランドニシダも参戦！？】',
     date: '2025.12.18',
-    thumbnail: 'https://images.unsplash.com/photo-1611162616475-46b635cb6868?auto=format&fit=crop&w=600&q=80',
-    href: '#',
+    datetime: '2025-12-18',
+    thumbnail: 'https://careers.goodpatch.com/wp-content/uploads/2025/12/IMG_1780.jpg',
+    href: 'https://www.youtube.com/watch?v=ho_4Y3mWLOI',
   },
   {
     id: 2,
     type: 'youtube',
     title: 'どうしてデザイナーから執行役員に？デザイナーのキャリアの相談室（前編）',
     date: '2025.09.22',
-    thumbnail: 'https://images.unsplash.com/photo-1553877522-43269d4ea984?auto=format&fit=crop&w=600&q=80',
-    href: '#',
+    datetime: '2025-09-22',
+    thumbnail: 'https://careers.goodpatch.com/wp-content/uploads/2025/11/OIkcu_5RV20.jpg',
+    href: 'https://www.youtube.com/watch?v=OIkcu_5RV20',
   },
   {
     id: 3,
     type: 'note',
     title: '世界最先端AI企業 OpenAIのデザイナーに求められる「曖昧さへの耐性」',
     date: '2025.08.03',
-    thumbnail: 'https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&w=600&q=80',
-    href: '#',
+    datetime: '2025-08-03',
+    thumbnail: 'https://careers.goodpatch.com/wp-content/uploads/2025/11/rectangle_large_type_2_f854b6e08f7904fd2b14b6dd2c25d431.webp',
+    href: 'https://note.com/naofumit/n/n8e4afd8933d1',
+  },
+  {
+    id: 4,
+    type: 'spotify',
+    title: 'デザインシステム「Sparkle Design」の裏側について運営メンバーと語る会',
+    date: '2025.07.10',
+    datetime: '2025-07-10',
+    thumbnail: 'https://careers.goodpatch.com/wp-content/uploads/2025/11/dummy_pickup_3.png',
+    href: 'https://open.spotify.com/episode/7qkHlPXGBaqyNw7Y5NcNGT',
   },
 ];
 
-const containerVariants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.15,
-      delayChildren: 0.2,
-    },
-  },
-};
-
-const itemVariants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: {
-      duration: 0.6,
-    },
-  },
-};
+function PlatformIcon({ type }: { type: PickupType }) {
+  switch (type) {
+    case 'youtube':
+      return (
+        <>
+          <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none">
+            <circle cx="12" cy="12" r="12" fill="#FF0000" />
+            <path d="M9.5 8.5v7l6-3.5-6-3.5z" fill="white" />
+          </svg>
+          <span className="text-[11px]">YouTube</span>
+        </>
+      );
+    case 'note':
+      return (
+        <>
+          <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none">
+            <circle cx="12" cy="12" r="12" fill="#41C9B4" />
+            <path d="M7 7h6v2H7V7zm0 4h10v2H7v-2zm0 4h8v2H7v-2z" fill="white" />
+          </svg>
+          <span className="text-[11px]">note</span>
+        </>
+      );
+    case 'spotify':
+      return (
+        <>
+          <svg className="w-5 h-5" viewBox="0 0 24 24" fill="none">
+            <circle cx="12" cy="12" r="12" fill="#1DB954" />
+            <path
+              d="M16.5 11c-2.5-1.5-6.5-1.6-8.8-.9-.4.1-.8-.1-.9-.5-.1-.4.1-.8.5-.9 2.7-.8 7.2-.7 10 1 .4.2.5.7.3 1-.2.4-.7.5-1.1.3zm-.3 2.3c-2.1-1.3-5.3-1.7-7.8-.9-.3.1-.7-.1-.8-.4-.1-.3.1-.7.4-.8 2.8-.9 6.4-.4 8.8 1.1.3.2.4.6.2.9-.2.3-.6.4-.8.1zm-1 2.2c-1.8-1.1-4-.8-5.3-.5-.3.1-.5-.1-.6-.3-.1-.3.1-.5.3-.6 1.5-.4 4-.7 6.1.6.2.1.3.5.1.7-.1.2-.4.3-.6.1z"
+              fill="white"
+            />
+          </svg>
+          <span className="text-[11px]">Spotify</span>
+        </>
+      );
+  }
+}
 
 export default function PickUp({ animationsEnabled }: PickUpProps) {
   const sectionRef = useRef<HTMLElement>(null);
   const isInView = useInView(sectionRef, { once: true, margin: '-100px' });
 
   return (
-    <section ref={sectionRef} id="pick-up" className="bg-white py-24 md:py-32">
-      <div className="container-custom">
+    <section ref={sectionRef} id="pick-up" className="bg-white py-[60px] md:py-[100px]">
+      <div className="mx-auto box-content max-w-[1120px] px-4 md:px-6 lg:px-8">
         {/* Section Header */}
         <motion.h2
-          className="text-3xl md:text-4xl font-bold text-[#0066FF] mb-12"
+          className="text-[32px] font-semibold leading-[1.2] text-[#0066FF]"
           initial={animationsEnabled ? { opacity: 0 } : { opacity: 1 }}
           animate={isInView ? { opacity: 1 } : { opacity: 0 }}
           transition={{ duration: 0.6 }}
@@ -73,72 +114,84 @@ export default function PickUp({ animationsEnabled }: PickUpProps) {
           Pick Up
         </motion.h2>
 
-        {/* Cards Grid */}
-        <motion.div
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
-          initial={animationsEnabled ? 'hidden' : 'visible'}
-          animate={isInView ? 'visible' : 'hidden'}
-          variants={containerVariants}
-        >
-          {pickupItems.map((item) => (
-            <motion.div key={item.id} variants={itemVariants}>
-              <Link
-                href={item.href}
-                className="group block bg-white rounded-2xl overflow-hidden border border-gray-100 hover:shadow-xl transition-all duration-500"
+        {/* Cards Container - Horizontal scroll on SP */}
+        <div className="mt-8 -mx-4 md:mx-0 overflow-hidden">
+          <motion.ul
+            className="
+              grid gap-4
+              md:grid-cols-2 lg:grid-cols-4
+              max-md:grid-cols-none max-md:grid-flow-col max-md:auto-cols-[minmax(300px,80%)]
+              max-md:overflow-x-auto max-md:snap-x max-md:snap-mandatory
+              max-md:px-4 max-md:-mx-4
+              scrollbar-hide
+            "
+            aria-label={`Pick Up一覧（${pickupItems.length}件）`}
+            initial={animationsEnabled ? { opacity: 0 } : { opacity: 1 }}
+            animate={isInView ? { opacity: 1 } : { opacity: 0 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+          >
+            {pickupItems.map((item, index) => (
+              <li
+                key={item.id}
+                className={`
+                  flex snap-start
+                  ${index === 0 ? 'max-md:pl-4' : ''}
+                  ${index === pickupItems.length - 1 ? 'max-md:pr-4' : ''}
+                `}
               >
-                {/* Platform Badge */}
-                <div className="p-4 pb-0 flex items-center gap-2">
-                  {item.type === 'youtube' ? (
-                    <>
-                      <svg className="w-5 h-5 text-red-600" viewBox="0 0 24 24" fill="currentColor">
-                        <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
-                      </svg>
-                      <span className="text-sm font-medium text-gray-700">YouTube</span>
-                    </>
-                  ) : (
-                    <>
-                      <svg className="w-5 h-5 text-green-600" viewBox="0 0 24 24" fill="currentColor">
-                        <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 15h-2v-6h2v6zm0-8h-2V7h2v2zm4 8h-2v-4h2v4zm0-6h-2V9h2v2z"/>
-                      </svg>
-                      <span className="text-sm font-medium text-gray-700">note</span>
-                    </>
-                  )}
-                </div>
+                <div className="flex flex-col overflow-hidden rounded-[12px] bg-[#F4F4F7] group w-full relative">
+                  {/* Platform Badge */}
+                  <div className="flex items-center gap-1 px-7 py-2">
+                    <PlatformIcon type={item.type} />
+                  </div>
 
-                {/* Thumbnail */}
-                <div className="p-4">
-                  <div className="relative aspect-video rounded-xl overflow-hidden bg-gray-100">
+                  {/* Thumbnail */}
+                  <div className="aspect-[260/145] w-full overflow-hidden">
                     <img
                       src={item.thumbnail}
                       alt={item.title}
-                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                      className="h-full w-full object-cover group-hover:scale-105 transition-transform duration-[600ms] ease-in-out group-hover:duration-300"
+                      loading="lazy"
+                      decoding="async"
                     />
-                    {item.type === 'youtube' && (
-                      <div className="absolute inset-0 flex items-center justify-center">
-                        <div className="w-14 h-14 bg-red-600 rounded-full flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300">
-                          <svg className="w-6 h-6 text-white ml-1" viewBox="0 0 24 24" fill="currentColor">
-                            <path d="M8 5v14l11-7z"/>
-                          </svg>
-                        </div>
-                      </div>
-                    )}
+                  </div>
+
+                  {/* Content */}
+                  <div className="flex flex-1 flex-col px-7 pb-5 pt-7">
+                    <Link
+                      href={item.href}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label={`${item.title} - ${item.date}（新しいウィンドウで開く）`}
+                      className="text-[15px] leading-[1.7] group-hover:text-[#0066FF] transition-colors duration-300 ease-in-out before:absolute before:left-0 before:top-0 before:h-full before:w-full rounded"
+                    >
+                      {item.title}
+                      <span className="inline-flex h-[14px] w-[14px] items-center justify-center overflow-hidden ml-1">
+                        <svg
+                          className="h-[14px] w-[14px] text-[#0066FF] -rotate-45"
+                          xmlns="http://www.w3.org/2000/svg"
+                          viewBox="0 0 10 10"
+                          fill="currentColor"
+                        >
+                          <path
+                            fill="currentColor"
+                            d="M5.845 2.22a.75.75 0 0 1 1.06 0L9.23 4.543c.41.41.41 1.075 0 1.485L6.905 8.352a.75.75 0 0 1-1.06-1.061l1.25-1.251H.75a.75.75 0 0 1 0-1.5h6.354l-1.26-1.26a.75.75 0 0 1 0-1.06Z"
+                          />
+                        </svg>
+                      </span>
+                    </Link>
+                    <time
+                      className="mt-auto pt-14 text-[12px] leading-[1.5] text-gray-500"
+                      dateTime={item.datetime}
+                    >
+                      {item.date}
+                    </time>
                   </div>
                 </div>
-
-                {/* Content */}
-                <div className="px-4 pb-6">
-                  <h3 className="text-base font-semibold text-gray-900 mb-3 line-clamp-2 group-hover:text-[#0066FF] transition-colors duration-300">
-                    {item.title}
-                    <svg className="inline-block ml-1 w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                      <path d="M7 17L17 7M17 7H7M17 7V17" />
-                    </svg>
-                  </h3>
-                  <p className="text-sm text-gray-400">{item.date}</p>
-                </div>
-              </Link>
-            </motion.div>
-          ))}
-        </motion.div>
+              </li>
+            ))}
+          </motion.ul>
+        </div>
       </div>
     </section>
   );

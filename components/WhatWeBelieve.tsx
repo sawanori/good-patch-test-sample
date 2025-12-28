@@ -22,7 +22,7 @@ export default function WhatWeBelieve({ animationsEnabled }: WhatWeBelieveProps)
   const isInView = useInView(sectionRef, { once: true, margin: '-100px' });
 
   return (
-    <section ref={sectionRef} className="bg-white py-24 md:py-32">
+    <section ref={sectionRef} className="bg-white py-[60px] md:py-[100px]">
       <div className="container-custom">
         {/* Section Header */}
         <motion.div
@@ -50,7 +50,7 @@ export default function WhatWeBelieve({ animationsEnabled }: WhatWeBelieveProps)
         <div className="aspect-[16/9] md:aspect-[21/9]">
           <img
             src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=2000&q=80"
-            alt="グッドパッチのオフィス"
+            alt="キンエンパッチのオフィス"
             className="w-full h-full object-cover"
           />
         </div>
@@ -66,10 +66,10 @@ export default function WhatWeBelieve({ animationsEnabled }: WhatWeBelieveProps)
             transition={{ duration: 0.7, delay: 0.4 }}
           >
             <p>
-              これは、グッドパッチが創業以来はじめて作った採用サイトです。デザイン会社だからこそ多くのデザイナーに出会いたい。同時に、デザインの力を信じるビジネス職やエンジニアとも数多く出会いたい。会社を魅力的に見せる演出ではなく、ありのままのリアルを見てほしい。
+              これは、キンエンパッチが創業以来はじめて作った採用サイトです。デザイン会社だからこそ多くのデザイナーに出会いたい。同時に、デザインの力を信じるビジネス職やエンジニアとも数多く出会いたい。会社を魅力的に見せる演出ではなく、ありのままのリアルを見てほしい。
             </p>
             <p>
-              その想いで、150名を超える社員が協力し、10万字以上の文章を書き上げました。私たちらしいと思い、AIを使った遊び心も加えています。全員で作り上げたこの採用サイトを通じて、あなたが働く選択肢の一つにグッドパッチが加われば、嬉しい限りです。
+              その想いで、150名を超える社員が協力し、10万字以上の文章を書き上げました。私たちらしいと思い、AIを使った遊び心も加えています。全員で作り上げたこの採用サイトを通じて、あなたが働く選択肢の一つにキンエンパッチが加われば、嬉しい限りです。
             </p>
           </motion.div>
         </div>

@@ -13,10 +13,10 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Goodpatch Careers | 採用サイト",
-  description: "あなたのやりたいことは、デザインかもしれない。Goodpatchは、デザインで社会を前進させる仲間を探しています。",
+  title: "Kinenpatch Careers | 採用サイト",
+  description: "あなたのやりたいことは、デザインかもしれない。Kinenpatchは、デザインで社会を前進させる仲間を探しています。",
   openGraph: {
-    title: "Goodpatch Careers | 採用サイト",
+    title: "Kinenpatch Careers | 採用サイト",
     description: "あなたのやりたいことは、デザインかもしれない。",
     type: "website",
   },

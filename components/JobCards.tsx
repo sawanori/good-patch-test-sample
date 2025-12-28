@@ -31,7 +31,7 @@ const jobs: Job[] = [
     titleEn: 'UI/UX Designer',
     titleJa: 'UI/UXデザイナー',
     description: '表層ではなく本質をデザインする仕事',
-    image: 'https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?auto=format&fit=crop&w=400&q=80',
+    image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=400&q=80',
     bgColor: '#F5F0E8',
   },
   {
@@ -39,7 +39,7 @@ const jobs: Job[] = [
     titleEn: 'Service Designer',
     titleJa: 'サービスデザイナー',
     description: '事業課題と人の体験を接続しビジネスの成功に貢献する',
-    image: 'https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&w=400&q=80',
+    image: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&w=400&q=80',
     bgColor: '#E8F0F5',
   },
   {
@@ -47,40 +47,40 @@ const jobs: Job[] = [
     titleEn: 'Product Manager',
     titleJa: 'プロダクトマネージャー',
     description: '多種多様な事業の成長に関与できるクライアントワーク型',
-    image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=400&q=80',
+    image: 'https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=400&q=80',
     bgColor: '#F5E8F0',
   },
   {
     id: 4,
     titleEn: 'Project Manager',
     titleJa: 'プロジェクトマネージャー',
-    description: 'プロジェクトを成功に導くための計画・推進・調整を担う',
-    image: 'https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&w=400&q=80',
-    bgColor: '#E8F5E8',
+    description: 'プロジェクトの成功に向けてチームを導く',
+    image: 'https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&w=400&q=80',
+    bgColor: '#E8F5F0',
   },
   {
     id: 5,
-    titleEn: 'Sales',
-    titleJa: 'セールス（営業）',
-    description: 'クライアントの課題を深く理解し、デザインの力で解決を提案する',
-    image: 'https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=400&q=80',
-    bgColor: '#F0F5E8',
+    titleEn: 'Frontend Engineer',
+    titleJa: 'フロントエンドエンジニア',
+    description: 'デザインを実現する技術力でプロダクトを形にする',
+    image: 'https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&w=400&q=80',
+    bgColor: '#F0E8F5',
   },
   {
     id: 6,
-    titleEn: 'Engineer',
-    titleJa: 'エンジニア',
-    description: '技術の力でデザインを実現し、ユーザーに価値を届ける',
-    image: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?auto=format&fit=crop&w=400&q=80',
-    bgColor: '#E8E8F5',
+    titleEn: 'BX Designer',
+    titleJa: 'BXデザイナー',
+    description: 'ブランド体験を通じて企業価値を高める',
+    image: 'https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=400&q=80',
+    bgColor: '#F5F0E8',
   },
   {
     id: 7,
-    titleEn: 'And More...',
-    titleJa: 'その他の職種',
-    description: 'コーポレート、マーケティング、経営企画など、多様な職種でデザインの力を信じる仲間を募集しています',
-    image: 'https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=800&q=80',
-    bgColor: '#F0F0F0',
+    titleEn: 'Join Our Team',
+    titleJa: 'キンエンパッチで働く',
+    description: '私たちと一緒にデザインの力で世界を前進させましょう',
+    image: 'https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=800&q=80',
+    bgColor: '#0066FF',
     isWide: true,
   },
 ];
@@ -104,7 +104,7 @@ function JobCardItem({ job, index, animationsEnabled, videoRef, isContainerInVie
 
   return (
     <motion.div
-      className={`group ${isWide ? 'col-span-2' : ''}`}
+      className={`group ${isWide ? 'col-span-2 md:col-span-3 lg:col-span-2' : ''}`}
       initial={animationsEnabled ? { opacity: 0, y: 30 } : { opacity: 1, y: 0 }}
       animate={isContainerInView ? { opacity: 1, y: 0 } : (animationsEnabled ? { opacity: 0, y: 30 } : { opacity: 1, y: 0 })}
       transition={{
@@ -115,7 +115,7 @@ function JobCardItem({ job, index, animationsEnabled, videoRef, isContainerInVie
     >
       {isWide ? (
         /* Wide Card - Video Background with Centered Content */
-        <div className="relative aspect-[8/5]" style={{ marginBottom: '-10px', clipPath: 'inset(0 0 10px 0)' }}>
+        <div className="relative aspect-[8/5] md:aspect-[12/5] lg:aspect-[8/5]" style={{ marginBottom: '-10px', clipPath: 'inset(0 0 10px 0)' }}>
           <div
             className="relative w-full h-full overflow-hidden rounded-2xl"
             style={{ backgroundColor: job.bgColor }}
@@ -145,19 +145,21 @@ function JobCardItem({ job, index, animationsEnabled, videoRef, isContainerInVie
               <p className="text-[10px] text-white/80 leading-relaxed mb-3 max-w-md">
                 {job.description}
               </p>
-              <div className="flex flex-col gap-1.5 items-center">
+              <div className="flex flex-col gap-2 items-center">
                 <Link
                   href="#"
-                  className="inline-flex items-center gap-1.5 bg-white text-[#0066FF] font-semibold rounded-full justify-center py-1.5 px-10 text-[10px] hover:bg-gray-100 transition-colors"
+                  className="inline-flex items-center justify-between bg-white text-[#0066FF] rounded-full px-4 h-[34px] min-w-[130px] hover:bg-gray-100 transition-colors"
                 >
-                  Entry
-                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="w-2.5 h-2.5">
-                    <path d="M7 17L17 7M17 7H7M17 7V17" />
-                  </svg>
+                  <span className="text-[14px] font-normal">Entry</span>
+                  <span className="ml-auto inline-flex items-center justify-center">
+                    <svg className="w-[11px] h-[11px] -rotate-45" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 10 10" fill="currentColor">
+                      <path d="M5.845 2.22a.75.75 0 0 1 1.06 0L9.23 4.543c.41.41.41 1.075 0 1.485L6.905 8.352a.75.75 0 0 1-1.06-1.061l1.25-1.251H.75a.75.75 0 0 1 0-1.5h6.354l-1.26-1.26a.75.75 0 0 1 0-1.06Z" />
+                    </svg>
+                  </span>
                 </Link>
                 <Link
                   href="#"
-                  className="text-[10px] font-medium text-white hover:underline transition-colors duration-200"
+                  className="text-[12px] font-medium text-white hover:underline transition-colors duration-200"
                 >
                   この職種の魅力
                 </Link>
@@ -179,6 +181,7 @@ function JobCardItem({ job, index, animationsEnabled, videoRef, isContainerInVie
               loop
               muted
               playsInline
+              poster={job.image}
               className="w-full h-full object-cover object-center"
             >
               <source src="/final.webm" type="video/webm" />
@@ -197,19 +200,21 @@ function JobCardItem({ job, index, animationsEnabled, videoRef, isContainerInVie
             <p className="text-[10px] text-gray-500 leading-relaxed mb-3 min-h-[1.5rem]">
               {job.description}
             </p>
-            <div className="flex flex-col gap-1.5 items-center">
+            <div className="flex flex-col gap-2 items-center">
               <Link
                 href="#"
-                className="btn-primary justify-center py-1.5 px-10 text-[10px]"
+                className="inline-flex items-center justify-between bg-[#0066FF] text-white rounded-full px-4 h-[34px] min-w-[130px] hover:bg-[#0052CC] transition-colors"
               >
-                Entry
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" className="w-2.5 h-2.5">
-                  <path d="M7 17L17 7M17 7H7M17 7V17" />
-                </svg>
+                <span className="text-[14px] font-normal">Entry</span>
+                <span className="ml-auto inline-flex items-center justify-center">
+                  <svg className="w-[11px] h-[11px] -rotate-45" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 10 10" fill="currentColor">
+                    <path d="M5.845 2.22a.75.75 0 0 1 1.06 0L9.23 4.543c.41.41.41 1.075 0 1.485L6.905 8.352a.75.75 0 0 1-1.06-1.061l1.25-1.251H.75a.75.75 0 0 1 0-1.5h6.354l-1.26-1.26a.75.75 0 0 1 0-1.06Z" />
+                  </svg>
+                </span>
               </Link>
               <Link
                 href="#"
-                className="text-[10px] font-medium text-[#0066FF] hover:underline transition-colors duration-200"
+                className="text-[12px] font-medium text-[#0066FF] hover:underline transition-colors duration-200"
               >
                 この職種の魅力
               </Link>
@@ -241,7 +246,7 @@ export default function JobCards({ animationsEnabled }: JobCardsProps) {
   }, [animationsEnabled]);
 
   return (
-    <section ref={sectionRef} id="job" className="py-24 md:py-32 bg-[#F7F7F7]">
+    <section ref={sectionRef} id="job" className="py-[60px] md:py-[100px] bg-[#F7F7F7]">
       <div className="container-custom">
         {/* Section Header */}
         <motion.div
@@ -254,14 +259,14 @@ export default function JobCards({ animationsEnabled }: JobCardsProps) {
             We're Hiring For 38 Roles.
           </h2>
           <p className="text-gray-600 text-base md:text-lg max-w-2xl mx-auto">
-            グッドパッチでは、デザイナーだけではなく
+            キンエンパッチでは、デザイナーだけではなく
             <br className="hidden sm:block" />
             デザイナー以外も多く在籍し、活躍しています
           </p>
         </motion.div>
 
         {/* Job Cards Grid */}
-        <div ref={gridRef} className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-8">
+        <div ref={gridRef} className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6 lg:gap-8">
           {jobs.map((job, index) => (
             <JobCardItem
               key={job.id}

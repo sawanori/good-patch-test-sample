@@ -6,24 +6,24 @@ const footerLinks = {
   about: {
     title: 'About',
     links: [
-      { label: '1ページで分かるグッドパッチ', href: '#' },
-      { label: 'グッドパッチの事業', href: '#' },
-      { label: 'グッドパッチ、10の噂', href: '#' },
+      { label: '1ページで分かるキンエンパッチ', href: '#' },
+      { label: 'キンエンパッチの事業', href: '#' },
+      { label: 'キンエンパッチ、10の噂', href: '#' },
       { label: '生成AI活用の現状', href: '#' },
-      { label: 'グッドパッチ・ストーリー', href: '#' },
-      { label: 'グッドパッチの未来', href: '#' },
+      { label: 'キンエンパッチ・ストーリー', href: '#' },
+      { label: 'キンエンパッチの未来', href: '#' },
       { label: '企業のデザインシフトの歴史', href: '#' },
-      { label: 'グッドパッチの経営陣', href: '#' },
-      { label: 'グッドパッチをもっと知るリンク集', href: '#' },
+      { label: 'キンエンパッチの経営陣', href: '#' },
+      { label: 'キンエンパッチをもっと知るリンク集', href: '#' },
     ],
   },
   culture: {
     title: 'Cluture',
     links: [
       { label: 'ビジョンとミッション', href: '#' },
-      { label: 'グッドパッチのバリュー（価値観）', href: '#' },
-      { label: 'グッドパッチの社内用語', href: '#' },
-      { label: 'グッドパッチのナレッジ', href: '#' },
+      { label: 'キンエンパッチのバリュー（価値観）', href: '#' },
+      { label: 'キンエンパッチの社内用語', href: '#' },
+      { label: 'キンエンパッチのナレッジ', href: '#' },
     ],
   },
   job: {
@@ -48,7 +48,7 @@ const footerLinks = {
     title: 'Workstyle',
     links: [
       { label: '社員アンケート', href: '#' },
-      { label: 'グッドパッチのPeople Experience', href: '#' },
+      { label: 'キンエンパッチのPeople Experience', href: '#' },
       { label: 'オンボーディング', href: '#' },
       { label: '育成・学習機会', href: '#' },
       { label: '評価と報酬', href: '#' },
@@ -91,10 +91,10 @@ export default function Footer() {
                 fontFamily="system-ui, -apple-system, sans-serif"
                 letterSpacing="-0.5"
               >
-                Goo
+                Kin
               </text>
               <text
-                x="46"
+                x="38"
                 y="22"
                 fill="#0066FF"
                 fontSize="22"
@@ -102,10 +102,10 @@ export default function Footer() {
                 fontFamily="system-ui, -apple-system, sans-serif"
                 letterSpacing="-0.5"
               >
-                d
+                en
               </text>
               <text
-                x="62"
+                x="68"
                 y="22"
                 fill="currentColor"
                 fontSize="22"
@@ -164,7 +164,7 @@ export default function Footer() {
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
             {/* Copyright */}
             <p className="text-sm text-gray-400">
-              &copy; {new Date().getFullYear()} Goodpatch Inc. All rights reserved.
+              &copy; {new Date().getFullYear()} Kinenpatch Inc. All rights reserved.
             </p>
 
             {/* Legal Links */}

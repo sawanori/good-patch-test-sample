@@ -20,7 +20,7 @@ const navItems = [
 const topBarLinks = [
   { label: 'キャリア採用', href: '#', active: true },
   { label: '新卒採用', href: '#' },
-  { label: 'コーポレートサイト', href: 'https://goodpatch.com', external: true },
+  { label: 'コーポレートサイト', href: 'https://kinenpatch.com', external: true },
 ];
 
 export default function Header({ animationsEnabled, onToggleAnimations }: HeaderProps) {
@@ -101,7 +101,7 @@ export default function Header({ animationsEnabled, onToggleAnimations }: Header
                 fill="none"
                 className="w-[140px] sm:w-[180px] md:w-[220px] h-auto transition-all duration-300 group-hover:scale-105"
               >
-                {/* Goodpatch Logo */}
+                {/* Kinenpatch Logo */}
                 <text
                   x="0"
                   y="30"
@@ -112,10 +112,10 @@ export default function Header({ animationsEnabled, onToggleAnimations }: Header
                   letterSpacing="-0.5"
                   className="transition-colors duration-300"
                 >
-                  Goo
+                  Kin
                 </text>
                 <text
-                  x="62"
+                  x="50"
                   y="30"
                   fill={isScrolled ? '#0066FF' : 'white'}
                   fontSize="30"
@@ -124,10 +124,10 @@ export default function Header({ animationsEnabled, onToggleAnimations }: Header
                   letterSpacing="-0.5"
                   className="transition-colors duration-300"
                 >
-                  d
+                  en
                 </text>
                 <text
-                  x="84"
+                  x="90"
                   y="30"
                   fill={isScrolled ? 'currentColor' : 'white'}
                   fontSize="30"
@@ -143,7 +143,7 @@ export default function Header({ animationsEnabled, onToggleAnimations }: Header
             </Link>
 
             {/* Desktop Navigation */}
-            <nav className="hidden lg:flex items-center gap-8">
+            <nav className="hidden lg:flex items-center gap-8 ml-auto mr-8">
               {navItems.map((item) => (
                 <Link
                   key={item.label}

@@ -7,7 +7,7 @@ import JobCards from '@/components/JobCards';
 import WhatWeBelieve from '@/components/WhatWeBelieve';
 import InfoSections from '@/components/InfoSections';
 import PickUp from '@/components/PickUp';
-import GoodpatchLibrary from '@/components/GoodpatchLibrary';
+import KinenpatchLibrary from '@/components/KinenpatchLibrary';
 import JoinUs from '@/components/JoinUs';
 import Footer from '@/components/Footer';
 
@@ -53,7 +53,7 @@ export default function Home() {
         <WhatWeBelieve animationsEnabled={animationsEnabled} />
         <InfoSections animationsEnabled={animationsEnabled} />
         <PickUp animationsEnabled={animationsEnabled} />
-        <GoodpatchLibrary animationsEnabled={animationsEnabled} />
+        <KinenpatchLibrary animationsEnabled={animationsEnabled} />
         <JoinUs animationsEnabled={animationsEnabled} />
       </main>
 
