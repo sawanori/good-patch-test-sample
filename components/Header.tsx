@@ -159,10 +159,10 @@ export default function Header({ animationsEnabled, onToggleAnimations }: Header
 
             {/* Right side controls */}
             <div className="flex items-center gap-3">
-              {/* Entry Button */}
+              {/* Entry Button - hidden on mobile */}
               <Link
                 href="#job"
-                className="btn-primary text-[6px] py-px px-1.5 leading-none"
+                className="hidden sm:inline-flex btn-primary text-[6px] py-px px-1.5 leading-none"
               >
                 Entry
                 <span className="text-[5px] opacity-80">38職種</span>
