@@ -16,6 +16,8 @@ interface Job {
   image: string;
   bgColor: string;
   isWide?: boolean;
+  videoWebm?: string;
+  videoMp4?: string;
 }
 
 interface JobCardItemProps {
@@ -33,6 +35,8 @@ const jobs: Job[] = [
     description: '表層ではなく本質をデザインする仕事',
     image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=400&q=80',
     bgColor: '#F5F0E8',
+    videoWebm: '/video_20251229T001435.webm',
+    videoMp4: '/video_20251229T001435.mp4',
   },
   {
     id: 2,
@@ -41,6 +45,8 @@ const jobs: Job[] = [
     description: '事業課題と人の体験を接続しビジネスの成功に貢献する',
     image: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&w=400&q=80',
     bgColor: '#E8F0F5',
+    videoWebm: '/sample1.webm',
+    videoMp4: '/sample1.mp4',
   },
   {
     id: 3,
@@ -49,6 +55,8 @@ const jobs: Job[] = [
     description: '多種多様な事業の成長に関与できるクライアントワーク型',
     image: 'https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&w=400&q=80',
     bgColor: '#F5E8F0',
+    videoWebm: '/sample2.webm',
+    videoMp4: '/sample2.mp4',
   },
   {
     id: 4,
@@ -184,8 +192,8 @@ function JobCardItem({ job, index, animationsEnabled, videoRef, isContainerInVie
               poster={job.image}
               className="w-full h-full object-cover object-center"
             >
-              <source src="/final.webm" type="video/webm" />
-              <source src="/final (5).mp4" type="video/mp4" />
+              <source src={job.videoWebm || "/final.webm"} type="video/webm" />
+              <source src={job.videoMp4 || "/final (5).mp4"} type="video/mp4" />
             </video>
           </div>
 
