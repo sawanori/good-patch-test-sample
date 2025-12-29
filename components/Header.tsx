@@ -162,7 +162,7 @@ export default function Header({ animationsEnabled, onToggleAnimations }: Header
               {/* Entry Button - hidden on mobile */}
               <Link
                 href="#job"
-                className="hidden sm:inline-flex btn-primary text-[6px] py-px px-1.5 leading-none"
+                className="hidden md:inline-flex btn-primary text-[6px] py-px px-1.5 leading-none"
               >
                 Entry
                 <span className="text-[5px] opacity-80">38職種</span>
